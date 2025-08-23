@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Cake</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: black; /* الخلفية سوداء */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+
+  .cake-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cake {
+    width: 200px;
+    height: 150px;
+    background: pink;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+  }
+
+  .cake::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 30px;
+    background: orange;
+    border-radius: 5px;
+  }
+
+  .cake-text {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .from-text {
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+  }
+
+  .heart {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: red;
+    transform: rotate(-45deg);
+    left: 0;
+    top: 0;
+    display: none;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: red;
+    border-radius: 50%;
+  }
+
+  .heart::before {
+    top: -20px;
+    left: 0;
+  }
+
+  .heart::after {
+    left: 20px;
+    top: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="cake-container">
+  <div class="cake">
+    <div class="cake-text">Happy Birthday My Love 💗</div>
+  </div>
+  <div class="from-text">From 7ODA</div>
+</div>
+
+<div class="heart" id="heart"></div>
+
+<script>
+  const heart = document.getElementById('heart');
+
+  function showHeart(e) {
+    heart.style.display = 'block';
+    let x = e.touches ? e.touches[0].clientX : e.clientX;
+    let y = e.touches ? e.touches[0].clientY : e.clientY;
+    heart.style.left = (x - 20) + 'px';
+    heart.style.top = (y - 20) + 'px';
+  }
+
+  function hideHeart() {
+    heart.style.display = 'none';
+  }
+
+  // لمس الشاشة
+  document.addEventListener('touchstart', showHeart);
+  document.addEventListener('touchmove', showHeart);
+  document.addEventListener('touchend', hideHeart);
+
+  // للفأرة (اختياري للتجربة على الكمبيوتر)
+  document.addEventListener('mousedown', showHeart);
+  document.addEventListener('mousemove', showHeart);
+  document.addEventListener('mouseup', hideHeart);
+</script>
+
+</body>
+  </html>
