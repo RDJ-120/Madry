@@ -33,6 +33,7 @@
         height: 200px;
     }
 
+    /* قاعدة الكيكة */
     .cake-base {
         width: 160px;
         height: 100px;
@@ -43,9 +44,10 @@
         left: 50%;
         transform: translateX(-50%);
         box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        overflow: hidden; /* يخفي قاعدة الشمعة */
+        overflow: hidden; /* يخفي قاعدة الشمعة داخل الكيكة */
     }
 
+    /* طبقة الكريمة */
     .icing {
         width: 180px;
         height: 40px;
@@ -61,10 +63,10 @@
     /* الشموع مزروعة داخل الكيكة */
     .candle-container {
         position: absolute;
-        bottom: 100px; /* قاعدة الكيكة */
+        bottom: 0; /* على حافة الكيكة */
         width: 12px;
         height: 40px;
-        overflow: hidden; /* يخفي جزء الشمعة داخل الكيكة */
+        overflow: visible; /* الجزء العلوي يظهر فوق الكيكة */
     }
 
     .candle {
@@ -72,7 +74,7 @@
         height: 40px;
         background: #ff6b81;
         position: relative;
-        top: -20px; /* يرفع الجزء العلوي للخارج */
+        top: -20px; /* الجزء العلوي يظهر فوق الكيكة */
         border-radius: 3px;
     }
 
@@ -93,6 +95,7 @@
         100% { transform: scale(1) translateY(0); opacity: 1; }
     }
 
+    /* نص From */
     .from-text {
         margin-top: 20px;
         font-size: 20px;
@@ -132,7 +135,7 @@
     <div class="icing"></div>
     <div class="cake-base"></div>
 
-    <!-- الشموع -->
+    <!-- الشموع مزروعة -->
     <div class="candle-container" style="left:50px;"><div class="candle"><div class="flame"></div></div></div>
     <div class="candle-container" style="left:90px;"><div class="candle"><div class="flame"></div></div></div>
     <div class="candle-container" style="left:130px;"><div class="candle"><div class="flame"></div></div></div>
@@ -168,4 +171,4 @@
 </script>
 
 </body>
-    </html>
+</html>
