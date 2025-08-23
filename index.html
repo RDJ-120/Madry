@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Cake</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: black; /* الخلفية سوداء */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cake {
+    width: 200px;
+    height: 200px;
+    background: pink;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  .from-text {
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+
+  .heart {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: red;
+    transform: rotate(-45deg);
+    left: 0;
+    top: 0;
+    display: none;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: red;
+    border-radius: 50%;
+  }
+
+  .heart::before {
+    top: -20px;
+    left: 0;
+  }
+
+  .heart::after {
+    left: 20px;
+    top: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="cake"></div>
+<div class="from-text">From 7ODA</div>
+<div class="heart" id="heart"></div>
+
+<script>
+  const heart = document.getElementById('heart');
+
+  function showHeart(e) {
+    heart.style.display = 'block';
+    let x = e.touches ? e.touches[0].clientX : e.clientX;
+    let y = e.touches ? e.touches[0].clientY : e.clientY;
+    heart.style.left = (x - 20) + 'px';
+    heart.style.top = (y - 20) + 'px';
+  }
+
+  function hideHeart() {
+    heart.style.display = 'none';
+  }
+
+  // لمس الشاشة
+  document.addEventListener('touchstart', showHeart);
+  document.addEventListener('touchmove', showHeart);
+  document.addEventListener('touchend', hideHeart);
+
+  // للفأرة (اختياري للتجربة على الكمبيوتر)
+  document.addEventListener('mousedown', showHeart);
+  document.addEventListener('mousemove', showHeart);
+  document.addEventListener('mouseup', hideHeart);
+</script>
+
+</body>
+  </html>
