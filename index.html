@@ -23,14 +23,7 @@
         color: #fff;
         text-shadow: 2px 2px 10px #ff6f91;
         text-align: center;
-        animation: pulse 1.2s infinite;
         margin-bottom: 20px;
-    }
-
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-        100% { transform: scale(1); }
     }
 
     /* الكيكة */
@@ -66,11 +59,11 @@
 
     /* الشموع */
     .candle {
-        width: 10px;
+        width: 12px;
         height: 40px;
         background: #ff6b81;
         position: absolute;
-        bottom: 140px;
+        bottom: 140px; /* على حافة الكيكة */
         border-radius: 3px;
     }
 
@@ -102,7 +95,7 @@
         color: white;
     }
 
-    /* قلب يظهر عند اللمس */
+    /* قلب يظهر عند الضغط ويختفي تدريجيًا */
     .heart {
         position: absolute;
         width: 40px;
@@ -112,6 +105,7 @@
         left: 0;
         top: 0;
         display: none;
+        transition: opacity 0.5s;
     }
     .heart::before,
     .heart::after {
@@ -147,24 +141,25 @@
 
   function showHeart(e) {
     heart.style.display = 'block';
+    heart.style.opacity = '1';
     let x = e.touches ? e.touches[0].clientX : e.clientX;
     let y = e.touches ? e.touches[0].clientY : e.clientY;
     heart.style.left = (x - 20) + 'px';
     heart.style.top = (y - 20) + 'px';
-  }
 
-  function hideHeart() {
-    heart.style.display = 'none';
+    // اختفاء القلب تدريجيًا بعد 0.5 ثانية
+    setTimeout(() => {
+        heart.style.opacity = '0';
+        setTimeout(() => heart.style.display = 'none', 500);
+    }, 500);
   }
 
   document.addEventListener('touchstart', showHeart);
   document.addEventListener('touchmove', showHeart);
-  document.addEventListener('touchend', hideHeart);
 
   document.addEventListener('mousedown', showHeart);
   document.addEventListener('mousemove', showHeart);
-  document.addEventListener('mouseup', hideHeart);
 </script>
 
 </body>
-</html>
+    </html>
