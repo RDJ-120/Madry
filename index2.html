@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to right, #ff9a9e, #fecfef);
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        overflow: hidden;
+    }
+
+    .cake {
+        position: relative;
+        width: 200px;
+        height: 200px;
+    }
+
+    /* قاعدة الكيكة */
+    .cake-base {
+        width: 160px;
+        height: 100px;
+        background: #ffb347;
+        border-radius: 0 0 20px 20px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    /* طبقة الكريمة */
+    .icing {
+        width: 180px;
+        height: 40px;
+        background: #fff;
+        border-radius: 50% 50% 0 0;
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* الشموع */
+    .candle {
+        width: 10px;
+        height: 40px;
+        background: #ff6b81;
+        position: absolute;
+        bottom: 140px;
+        border-radius: 3px;
+        animation: flicker 1s infinite;
+    }
+
+    .candle:nth-child(1) { left: 50px; }
+    .candle:nth-child(2) { left: 90px; }
+    .candle:nth-child(3) { left: 130px; }
+
+    /* لهب الشموع */
+    .flame {
+        width: 12px;
+        height: 12px;
+        background: radial-gradient(circle, #ff0, #f00);
+        border-radius: 50%;
+        position: absolute;
+        top: -8px;
+        left: -1px;
+        animation: flicker 0.5s infinite;
+    }
+
+    @keyframes flicker {
+        0% { transform: scale(1) translateY(0); opacity: 1; }
+        50% { transform: scale(1.2) translateY(-2px); opacity: 0.8; }
+        100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    /* رسالة عيد الميلاد */
+    h1 {
+        position: absolute;
+        top: 20px;
+        font-size: 2.5em;
+        color: #fff;
+        text-shadow: 2px 2px 10px #ff6f91;
+        text-align: center;
+        width: 100%;
+        animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    /* قلوب متطايرة */
+    .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        transform: rotate(-45deg);
+        animation: float 4s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: 10px; top: 0; }
+
+    @keyframes float {
+        0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+        100% { transform: translateY(-400px) rotate(-45deg); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+<h1>Happy Birthday My Love💗</h1>
+
+<div class="cake">
+    <div class="icing"></div>
+    <div class="cake-base"></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+</div>
+
+<!-- قلوب متطايرة -->
+<div class="heart" style="left:30%; animation-delay:0s;"></div>
+<div class="heart" style="left:50%; animation-delay:1s;"></div>
+<div class="heart" style="left:70%; animation-delay:2s;"></div>
+<div class="heart" style="left:40%; animation-delay:3s;"></div>
+<div class="heart" style="left:60%; animation-delay:1.5s;"></div>
+
+</body>
+</html>
