@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Cake</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+
+  .cake-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* النص فوق الكيكة */
+  .cake-text {
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  /* الطبقة الأولى */
+  .layer {
+    width: 220px;
+    height: 60px;
+    background: #d2691e;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+
+  /* الكريمة بين الطبقات */
+  .cream {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: #fff5ee;
+    border-radius: 8px;
+  }
+
+  /* الكرز على الوجه */
+  .cherry {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+    top: -15px;
+  }
+
+  .cherry:nth-child(1){ left: 30px; }
+  .cherry:nth-child(2){ left: 80px; }
+  .cherry:nth-child(3){ left: 130px; }
+  .cherry:nth-child(4){ left: 180px; }
+
+  /* الشمعة */
+  .candle {
+    width: 12px;
+    height: 50px;
+    background: orange;
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(255,165,0,0.8);
+  }
+
+  .flame {
+    width: 16px;
+    height: 16px;
+    background: yellow;
+    border-radius: 50%;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flicker 1s infinite alternate;
+    box-shadow: 0 0 10px yellow;
+  }
+
+  @keyframes flicker {
+    0% { transform: translateX(-50%) scale(1); opacity:1; }
+    50% { transform: translateX(-50%) scale(1.2); opacity:0.8; }
+    100% { transform: translateX(-50%) scale(1); opacity:1; }
+  }
+
+  .from-text {
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+  }
+
+  /* القلب عند اللمس */
+  .heart {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: red;
+    transform: rotate(-45deg);
+    left: 0;
+    top: 0;
+    display: none;
+  }
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: red;
+    border-radius: 50%;
+  }
+  .heart::before { top: -20px; left: 0; }
+  .heart::after { left: 20px; top: 0; }
+</style>
+</head>
+<body>
+
+<div class="cake-container">
+  <div class="cake-text">Happy Birthday My Love 💗</div>
+  
+  <div class="layer">
+    <div class="cream"></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="cherry"></div>
+    <div class="cherry"></div>
+    <div class="cherry"></div>
+    <div class="cherry"></div>
+  </div>
+  <div class="layer">
+    <div class="cream"></div>
+  </div>
+  <div class="layer"></div>
+
+  <div class="from-text">From 7ODA</div>
+</div>
+
+<div class="heart" id="heart"></div>
+
+<script>
+  const heart = document.getElementById('heart');
+
+  function showHeart(e) {
+    heart.style.display = 'block';
+    let x = e.touches ? e.touches[0].clientX : e.clientX;
+    let y = e.touches ? e.touches[0].clientY : e.clientY;
+    heart.style.left = (x - 20) + 'px';
+    heart.style.top = (y - 20) + 'px';
+  }
+
+  function hideHeart() {
+    heart.style.display = 'none';
+  }
+
+  document.addEventListener('touchstart', showHeart);
+  document.addEventListener('touchmove', showHeart);
+  document.addEventListener('touchend', hideHeart);
+
+  document.addEventListener('mousedown', showHeart);
+  document.addEventListener('mousemove', showHeart);
+  document.addEventListener('mouseup', hideHeart);
+</script>
+
+</body>
+  </html>
