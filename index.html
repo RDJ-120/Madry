@@ -43,6 +43,7 @@
         left: 50%;
         transform: translateX(-50%);
         box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        overflow: hidden; /* يخفي قاعدة الشمعة */
     }
 
     .icing {
@@ -57,29 +58,32 @@
         box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
-    /* الشموع */
+    /* الشموع مزروعة داخل الكيكة */
+    .candle-container {
+        position: absolute;
+        bottom: 100px; /* قاعدة الكيكة */
+        width: 12px;
+        height: 40px;
+        overflow: hidden; /* يخفي جزء الشمعة داخل الكيكة */
+    }
+
     .candle {
         width: 12px;
         height: 40px;
         background: #ff6b81;
-        position: absolute;
-        bottom: 140px; /* على حافة الكيكة */
+        position: relative;
+        top: -20px; /* يرفع الجزء العلوي للخارج */
         border-radius: 3px;
     }
 
-    .candle:nth-child(1) { left: 50px; }
-    .candle:nth-child(2) { left: 90px; }
-    .candle:nth-child(3) { left: 130px; }
-
-    /* لهب الشموع */
     .flame {
         width: 12px;
         height: 12px;
         background: radial-gradient(circle, #ff0, #f00);
         border-radius: 50%;
         position: absolute;
-        top: -8px;
-        left: -1px;
+        top: -12px;
+        left: 0;
         animation: flicker 0.5s infinite;
     }
 
@@ -127,9 +131,11 @@
 <div class="cake">
     <div class="icing"></div>
     <div class="cake-base"></div>
-    <div class="candle"><div class="flame"></div></div>
-    <div class="candle"><div class="flame"></div></div>
-    <div class="candle"><div class="flame"></div></div>
+
+    <!-- الشموع -->
+    <div class="candle-container" style="left:50px;"><div class="candle"><div class="flame"></div></div></div>
+    <div class="candle-container" style="left:90px;"><div class="candle"><div class="flame"></div></div></div>
+    <div class="candle-container" style="left:130px;"><div class="candle"><div class="flame"></div></div></div>
 </div>
 
 <div class="from-text">From 7ODA</div>
