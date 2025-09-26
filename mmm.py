@@ -7,9 +7,9 @@ app = Flask(__name__, static_folder='.')
 
 SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 587
-SMTP_USER = "mazen34554@gmail.com"      # ايميلك
-SMTP_PASS = "12345678911q"              # باسوردك
-TO_EMAIL  = "mazen37667@gmail.com"      # الايميل اللي توصله الرسالة
+SMTP_USER = "mazen37667@gmail.com"      # ايميلك
+SMTP_PASS = "as43 lnhv ad2e 35jf xn5j sarj qaqm lcvd"              # باسوردك
+TO_EMAIL  = "mazen34554@gmail.com"      # الايميل اللي توصله الرسالة
 
 def send_ip_email(ip, path):
     msg = EmailMessage()
